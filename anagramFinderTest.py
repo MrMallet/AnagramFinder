@@ -1,5 +1,4 @@
 
-
 def userInput(anagram):
     listword1 = list(anagram)
     sortword1 = sorted(listword1)
@@ -37,8 +36,6 @@ def searcher(hashWord, hashedWords, wordList):
             #print(hashWord)
         counter +=1
     return resultList
-
-
 
 def testalgo():
     #print("Enter any collection of letters:")
