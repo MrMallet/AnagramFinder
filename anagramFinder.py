@@ -1,23 +1,38 @@
+wordList = []
+hashedWords = []
+sortword1 = " "
 
-
-def userInput(anagram):
+def userInput():
     listword1 = list(anagram)
     sortword1 = sorted(listword1)
     joinword1 = "".join(sortword1)
     answer = hash(joinword1)
     return answer
 
-def preprocess(anagram, wordList):
-    #wordList = []
+def eliminate():
+    #take the sorted word minus 1 letter from position[i] and search for length-1
+    #take the sorted word minus 2 letters from position[i] + and postion[j] and search from length -2
+    #take the sorted word minus 3 letters from position[i,j,k] icrementing the k and search from length-3
+    #absolutely untenable scenario. the larger the word the more impossible it becomes. Quadratic.
+    #would have to use an interative algorithm in conjunction with this one.
+    #OR completely change plan of attack.
+
+    #
+
+    i=0
+    j= len(anagram)
+    for i in j-1:
+        listword2 = list(sortword1)# trying to create the list minus last one.
+
+
+def checker():
     f = open('wordsEn.txt', 'r')
     words = f.read().split()
     for word in words:
-        if(len(word) == len(anagram)):
+        if(len(word) <= len(anagram)):
             wordList.append(word)
-    return hasher(wordList)
 
-def hasher(wordList):
-    hashedWords=[]
+def hasher():
     count = 0
     for word in wordList:
         listword = list(word)
@@ -25,32 +40,19 @@ def hasher(wordList):
         joinword = "".join(sortword)
         hashedWords.append( hash(joinword))
         count+=1
-    return hashedWords
 
-def searcher(hashWord, hashedWords, wordList):
-    resultList =[]
+def searcher():
     counter = 0
-    for hashedWord in hashedWords:
+    for hashWord in hashedWords:
         if (hashedWord == hashWord):
-            resultList.append(wordList[counter])
-            #print(wordList[counter])
+            print(wordList[counter])
             #print(hashWord)
         counter +=1
-    return resultList
 
-
-
-def testalgo():
-    #print("Enter any collection of letters:")
-    #anagram = input()
-    wordList = []
-    anagram =  "farmer"
-    hashWord = userInput(anagram)
-    #print("all possible anagrams are as follows: ")
-    hashedWords = preprocess(anagram, wordList)
-    return searcher(hashWord, hashedWords, wordList)
-
-if __name__=='__main__':
-    print(testalgo())
-    import timeit
-    print(timeit.timeit("testalgo()",setup="from __main__ import testalgo", number = 100))
+print("Enter any collection of letters:")
+anagram = input()
+hashedWord = userInput()
+checker()
+hasher()
+print("all possible anagrams are as follows: ")
+searcher()

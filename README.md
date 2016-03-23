@@ -1,7 +1,48 @@
-# AnagramFinder
+### James Moloney
+#### G00304978
 
-Run anagramFinder.py
-Enter "parse"
+# Countdown Letters Game Solver
+Creating an algorithm that solves the nine letter Countdown game according to the rules of the game.
+Also to create the wordlist used in the project but for the mean time we'll use wordsEn.txt.
 
-Run again 
-Enter "Education"
+
+## Background
+The first task I completed as part of this project was to Google "countdown letters game solver".
+  Google gave me two relevant results on the first page, these are [Countdown solver][1] and [Countdown letters game solver][2].
+
+## Words list
+My words list is in the file [wordsEN.txt](wordsEn.txt) in this repository/gist.
+I got my words list from the [English Wordlists ][3] website.
+
+## Python script
+My script is in the files [solver.py](solver.py) in this repository and it works as follows.
+The most important section is:
+
+```python
+import random
+print(random.shuffle("My code is cool."))
+```
+
+Previously it looks like this:
+```python
+# Note that the following snippet of code was adapted from
+# the Stack Overflow post available here: http://www.so.com/post/123
+import nothing
+```
+That didn't work too well, so I changed it.
+
+## Preprocessing
+My script does a lot of preprocessing, which only needs to be run once.
+Once the preprocessing is done we can run the game solver again and again without that overhead.
+
+## Efficiency
+Here's some stuff about how efficient my code is, including an analysis of how many calculations my algorithm requires.
+
+## Results
+My script runs very quickly, and certainly within the 30 seconds allowed in the Countdown letters game.
+
+
+## References
+[1]: http://incoherency.co.uk/countdown/
+[2]: http://datagenetics.com/blog/august52014/index.html
+[3]: http://www-01.sil.org/linguistics/wordlists/english/

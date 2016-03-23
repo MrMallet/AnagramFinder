@@ -1,4 +1,3 @@
-
 def userInput(anagram):
     listword1 = list(anagram)
     sortword1 = sorted(listword1)
