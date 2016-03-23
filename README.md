@@ -8,11 +8,14 @@ Also to create the wordlist used in the project but for the mean time we'll use 
 
 ## Background
 The first task I completed as part of this project was to Google "countdown letters game solver".
-  Google gave me two relevant results on the first page, these are [Countdown solver][1] and [Countdown letters game solver][2].
+Google gave me two relevant results on the first page, these are [Countdown solver][1] and [Countdown letters game solver][2].
+The rules of the game are to be found [here][4]
+
 
 ## Words list
 My words list is in the file [wordsEN.txt](wordsEn.txt) in this repository/gist.
 I got my words list from the [English Wordlists ][3] website.
+However my list of 9 (and less than) letter wordlist is [nineOrLess.txt][nineOrLess.txt] 
 
 ## Python script
 My script is in the files [solver.py](solver.py) in this repository and it works as follows.
@@ -46,3 +49,4 @@ My script runs very quickly, and certainly within the 30 seconds allowed in the 
 [1]: http://incoherency.co.uk/countdown/
 [2]: http://datagenetics.com/blog/august52014/index.html
 [3]: http://www-01.sil.org/linguistics/wordlists/english/
+[4]: https://en.wikipedia.org/wiki/Countdown_(game_show)#Letters_round
