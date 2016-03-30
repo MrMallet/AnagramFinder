@@ -1,6 +1,9 @@
+import timeit
 import random
 import itertools
-wordMap = {}
+from itertools import combinations
+
+wordDict = dict()
 
 def preprocess():
     count=0
@@ -11,26 +14,16 @@ def preprocess():
         sortedKey = "".join(key)
         count +=1
         addToMap(sortedKey,word)
-    print(count)
 
 def addToMap(key,value):
     if(len(key)>2 and len(key)<10):
-        if key in wordMap:
-            wordMap.get(key).append(value) #if key exists, get the reference to the list(value) and add it.
+        if key in wordDict:
+            wordDict.get(key).append(value) #if key exists, get the reference to the list(value) and add it.
         else:
-            wordMap.update({key:[value]})
+            wordDict.update({key:[value]})
 
 preprocess()
 
-
-#append to listofanswers as we check the nine letter answers
-#in checking the eight letter answers we will have to change the the list of eight letter wordlist amd so on
-
-
-wordList = []
-resultList =[]
-hashedWords=[]
-letters=[]
 vowels =['a','a','a','a','a','a','a','a','a','e','e','e','e','e','e','e','e','e','e','e','e','i','i','i','i','i','i','i','i','i','o','o','o','o','o','o','o','o','u','u','u','u',]   #no weightin in either forthe minute
 consts =['q','w','w','r','r','r','r','r','r','t','t','t','t','t','t','y','y','p','p','s','s','s','s','d','d','d','d','f','f','g','g','g','j','k','l','l','l','l','z','x','c','c','v','v','b','b','n','n','n','n','n','n','m','m',]
 #two arrays above weighted using scrabble weighting
@@ -39,6 +32,7 @@ numOfConsts = 4
 checkAnswerCounter = 9
 
 def getLetters():
+    letters=[]
     for i in range(numOfVowels):
         letters.append(random.choice(vowels))
     for i in range(numOfConsts):
@@ -47,9 +41,6 @@ def getLetters():
         letters.append(random.choice(vowels + consts))
     return letters
 
-getLetters()
-print(letters)
-
 def processWord(word):
     sortword = sorted(word)
     joinword = "".join(sortword)
@@ -57,20 +48,27 @@ def processWord(word):
 
 def searcher(sortedLetters):
     count = 9
-    for i in range(0, len(sortedLetters))
-        perms += itertools.permutations(sortedLetters, count)
+    #print (len(sortedLetters))
+    combs = []
+    comb= []
+    for i in range(0, count):
+        combs = itertools.combinations(sortedLetters, count)
+        comb = ["".join(line) for line in combs]
         count -=1
-    print(list(perms))
-
-
+        for combination in comb:
+            if combination in wordDict.keys():
+                return(wordDict[combination])
 
 def algoRunner():
     letters = getLetters()
     sortedLetters = processWord(letters)
-
-    searcher(sortedLetters)
-
-    result = 0
+    result =searcher(sortedLetters)
     return result
 
-print(algoRunner())
+if __name__=='__main__':
+    print(algoRunner())
+    import timeit
+    print(timeit.timeit("algoRunner()",setup="from __main__ import algoRunner", number = 10000))
+
+#print(algoRunner())
+#print(searcher(processWord('parse')))
