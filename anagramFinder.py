@@ -16,7 +16,7 @@ def eliminate():
     #absolutely untenable scenario. the larger the word the more impossible it becomes. Quadratic.
     #would have to use an interative algorithm in conjunction with this one.
     #OR completely change plan of attack.
-
+    
     i=0
     j= len(anagram)
     for i in j-1:

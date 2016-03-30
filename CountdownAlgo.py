@@ -9,7 +9,7 @@ hashedWords=[]
 letters=[]
 vowels =['a','a','a','a','a','a','a','a','a','e','e','e','e','e','e','e','e','e','e','e','e','i','i','i','i','i','i','i','i','i','o','o','o','o','o','o','o','o','u','u','u','u',]   #no weightin in either forthe minute
 consts =['q','w','w','r','r','r','r','r','r','t','t','t','t','t','t','y','y','p','p','s','s','s','s','d','d','d','d','f','f','g','g','g','j','k','l','l','l','l','z','x','c','c','v','v','b','b','n','n','n','n','n','n','m','m',]
-#two arrays above weighted using scrabble weighting 
+#two arrays above weighted using scrabble weighting
 numOfVowels = 3
 numOfConsts = 4
 checkAnswerCounter = 9
@@ -69,7 +69,6 @@ def searcher(hashWord, hashedWords, wordList):
     return resultList
 
 def checkAnswer(answer):
-    stupidcount = 0
     if not answer :
         #print("sure were getting here at least")
         #reduce length of the array by popping one off the left and search with that word,
@@ -80,9 +79,9 @@ def checkAnswer(answer):
         for i in range(len(subAns)):
             answer8= subAns[0:(i)] + subAns[(i+1):]
             hashed8Anagram = processWordToHash(answer8)
-            matches = searcher(hashed8Anagram, hashedWords, wordList)
+            answer = searcher(hashed8Anagram, hashedWords, wordList)
 
-    if not matches:
+    if not answer:
         #place a recursive call in here
         print("to the possible 7s")
         for i in range(len(letters)):
@@ -90,8 +89,8 @@ def checkAnswer(answer):
             for j in range(len(answer8)):
                 answer7 = answer8[0:(j)] + answer8[(j+1):]
                 hashed7Anagram = processWordToHash(answer7)
-                matches = searcher(hashed7Anagram, hashedWords, wordList)
-    if not matches:
+                answer = searcher(hashed7Anagram, hashedWords, wordList)
+    if not answer:
         print("to the possible 6s")
         for i in range(len(letters)):
             answer8 = letters[0:(i)] + letters[(i+1):]
@@ -100,8 +99,8 @@ def checkAnswer(answer):
                 for k in range(len(answer7)):
                     answer6 = answer7[0:(k)] + answer7[(k+1):]
                     hashed6Anagram = processWordToHash(answer6)
-                    matches = searcher(hashed6Anagram, hashedWords, wordList)
-    if not matches:
+                    answer = searcher(hashed6Anagram, hashedWords, wordList)
+    if not answer:
         print("to the possible 5s")
         for i in range(len(letters)):
             answer8 = letters[0:(i)] + letters[(i+1):]
@@ -110,12 +109,10 @@ def checkAnswer(answer):
                 for k in range(len(answer7)):
                     answer6 = answer7[0:(k)] + answer7[(k+1):]
                     for l in range(len(answer6)):
-                        stupidcount +=1
                         answer5 = answer6[0:(l)] + answer6[(l+1):]
                         hashed5Anagram = processWordToHash(answer5)
-                        matches = searcher(hashed5Anagram, hashedWords, wordList)
-    #print(stupidcount)
-    return matches
+                        answer = searcher(hashed5Anagram, hashedWords, wordList)
+    return answer
 
 
 
