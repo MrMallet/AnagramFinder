@@ -46,8 +46,8 @@ On a machine with 6300 AMD(Six cores and 4ghz) processor it runs slow searching 
 
 Using the itertools.combination allows
 nCr  =  	n!
-     -----------
-    	r!(n - r)!
+          -----------
+         	r!(n - r)!
 
 9C9 = 1           1
 9C8 = 9           10
@@ -58,6 +58,7 @@ nCr  =  	n!
 9C3 = 84          466
 9C2 = 36          502 possible maximum iterations
 9C1 = 9           511  
+
 
 http://www.mathcelebrity.com/permutation.php?num=9&den=3&pl=Combinations
 
