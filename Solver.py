@@ -51,7 +51,7 @@ def searcher(sortedLetters):
     comb= []
     for i in range(0, count):
         combs = itertools.combinations(sortedLetters, count)
-        #this allows for a maximum of 9c9+c98+9c7+.... which comes to a totol of 502 maximum calls to the 
+        #this allows for a maximum of 9c9+c98+9c7+.... which comes to a totol of 502 maximum calls to the
         comb += ["".join(line) for line in combs]
         count -=1
         for combination in comb:
