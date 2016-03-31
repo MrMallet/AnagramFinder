@@ -3,7 +3,7 @@ import random
 import itertools
 from itertools import combinations
 
-wordDict = dict()
+wordDict = dict() #https://docs.python.org/2/library/stdtypes.html#dictionary-view-objects
 
 def preprocess():
     count=0
@@ -47,20 +47,23 @@ def processWord(word):
     return joinword
 
 def searcher(sortedLetters):
-    count = 9
+    count = (len(sortedLetters))
     #print (len(sortedLetters))
     combs = []
     comb= []
     for i in range(0, count):
         combs = itertools.combinations(sortedLetters, count)
-        comb = ["".join(line) for line in combs]
+        #this allows for a maximum of 9c9+c98+9c7+.... which comes to a totol of
+        comb += ["".join(line) for line in combs]
         count -=1
         for combination in comb:
+            #print (combination)
             if combination in wordDict.keys():
                 return(wordDict[combination])
 
 def algoRunner():
     letters = getLetters()
+    #print(letters)
     sortedLetters = processWord(letters)
     result =searcher(sortedLetters)
     return result
@@ -71,4 +74,4 @@ if __name__=='__main__':
     print(timeit.timeit("algoRunner()",setup="from __main__ import algoRunner", number = 10000))
 
 #print(algoRunner())
-#print(searcher(processWord('parse')))
+#print(searcher(processWord('education')))

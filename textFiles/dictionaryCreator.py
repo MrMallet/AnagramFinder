@@ -1,4 +1,4 @@
-f = open('wordlist.txt', 'r')
+f = open('wordsEn.txt', 'r')
 o = open('nineOrLess.txt', 'w')
 
 for word in f:

@@ -44,8 +44,28 @@ First run is a brute force Quadratic solution. 9*8*7*6 = 3024 searches through t
 On a machine with 6300 AMD(Six cores and 4ghz) processor it runs slow searching for the five letter words when it gets down that far.
 
 
+Using the itertools.combination allows
+nCr  =  	n!
+     -----------
+    	r!(n - r)!
+
+9C9 = 1           1
+9C8 = 9           10
+9C7 = 36          46
+9C6 = 84          130
+9C5 = 126         256
+9C4 = 126         382
+9C3 = 84          466
+9C2 = 36          502 possible maximum iterations
+9C1 = 9           511  
+
+http://www.mathcelebrity.com/permutation.php?num=9&den=3&pl=Combinations
+
+
 ## Results
 My script runs very quickly, and certainly within the 30 seconds allowed in the Countdown letters game.
+Testing on 10000 calls without preprocessing takes 1.2 seconds
+
 
 
 ## References
