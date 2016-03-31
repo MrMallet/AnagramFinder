@@ -70,20 +70,23 @@ On a machine with 6300 AMD(Six cores and 4ghz) processor it runs slow searching 
 
 
 Using the itertools.combination allows
+```python
 nCr  =  	n!
           -----------
          	r!(n - r)!
+```
 
-9C9 = 1           1
-9C8 = 9           10
-9C7 = 36          46
-9C6 = 84          130
-9C5 = 126         256
-9C4 = 126         382
-9C3 = 84          466
-9C2 = 36          502 possible maximum iterations
-9C1 = 9           511  
-
+| forumla (n)  | sum   |
+|----------|------------|
+| 9C9 = 1  |  &nbsp;1   |
+| 9C8 = 9  |  &nbsp;10  |
+| 9C7 = 36 |  &nbsp;46  |
+| 9C6 = 84 |  &nbsp;130 |
+| 9C5 = 126| &nbsp;256  |
+| 9C4 = 126| &nbsp;382  |
+| 9C3 = 84 | &nbsp;466  |
+| 9C2 = 36 | &nbsp;502  | possible maximum iterations
+| 9C1 = 9  | &nbsp;511  |
 
 http://www.mathcelebrity.com/permutation.php?num=9&den=3&pl=Combinations
 
