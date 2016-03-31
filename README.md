@@ -2,9 +2,8 @@
 #### G00304978
 
 # Countdown Letters Game Solver
-Creating an algorithm that solves the nine letter Countdown game according to the rules of the game.
-Also to create the wordlist used in the project but for the mean time we'll use wordsEn.txt.
-
+The aim of the project is to create an algorithm that solves the nine letter Countdown game according to the rules of the game.
+Secondary to that, to create a worlist that most closely represent that used by the Countdown game itself. 
 
 ## Background
 The first task I completed as part of this project was to Google "countdown letters game solver".
@@ -25,7 +24,7 @@ You'll get an anagram and a solution(the first solution that the algorithm comes
 
 ### countdownAlgo.py
 My first run is a [very naive solution](countDownAlgo.py). 1*9*8*7*6 = 3024 searches through the wordlist in the worst of cases.
-And that's only to the fifth letter search. In conjunction with a search through the wordlist array to find a matching hashedWord and the time for a search was staggered throughout the if statements lasting up to several seconds.
+And that's only to the fifth letter search. In conjunction with a search through the wordlist array to find a matching hashedWord, the time for a search was staggered throughout the if statements, lasting up to several seconds.
 
 ```python
 if not answer:
@@ -160,8 +159,6 @@ C:\Users\g0030\Documents\GitHub\AnagramFinder>Solver.py
 ['outage']
 1.1388079622200877
 ```
-
-
 
 
 ## References
