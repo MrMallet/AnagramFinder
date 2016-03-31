@@ -10,18 +10,21 @@ Also to create the wordlist used in the project but for the mean time we'll use 
 The first task I completed as part of this project was to Google "countdown letters game solver".
 Google gave me two relevant results on the first page, these are [Countdown solver][1] and [Countdown letters game solver][2].
 The rules of the game are to be found [here][4]
-
+I wanted to create a naive algorithm and then a more considered algorithm.
 
 ## Words list
 My words list is in the file [wordsEN.txt](wordsEn.txt) in this repository/gist.
 I got my words list from the [English Wordlists ][3] website.
 However my list of 9 (and less than) letter wordlist is [nineOrLess.txt](nineOrLess.txt)
 
+##Instructions
+Simply run solver.py
+You'll get an anagram and a solution(the first solution that the algorithm comes across will also be the highest in length).
 
 ## Python scripts
 
 ### countdownAlgo.py
-My first run is a very naive solution. 1*9*8*7*6 = 3024 searches through the wordlist in the worst of cases.
+My first run is a [very naive solution](countDownAlgo.py). 1*9*8*7*6 = 3024 searches through the wordlist in the worst of cases.
 And that's only to the fifth letter search. In conjunction with a search through the wordlist array to find a matching hashedWord and the time for a search was staggered throughout the if statements lasting up to several seconds.
 
 ```python
@@ -40,7 +43,7 @@ if not answer:
   return answer
 
 ```
-It worked but it didn't work too well, so I changed it.
+It worked but it didn't work too well, so onto a different approach.
 
 
 ### solver.py
@@ -61,7 +64,24 @@ for i in range(0, count):
 
 
 ```
+Get the letters was simple enough with the vowels and consonants weighted using [scrabble weighting](4) as the wiki page suggests they are very [similarly weighted](5)#Letters_round) using the Oxford dictionarys
+```python
+vowels=['a','a','a','a','a','a','a','a','a','e','e','e','e','e','e','e','e','e','e','e','e','i','i','i','i','i','i','i','i','i','o','o','o','o','o','o','o','o','u','u','u','u',]  
+consts=['q','w','w','r','r','r','r','r','r','t','t','t','t','t','t','y','y','p','p','s','s','s','s','d','d','d','d','f','f','g','g','g','j','k','l','l','l','l','z','x','c','c','v','v','b','b','n','n','n','n','n','n','m','m',]
 
+numOfVowels = 3
+numOfConsts = 4
+
+def getLetters():
+    letters=[]
+    for i in range(numOfVowels):
+        letters.append(random.choice(vowels))
+    for i in range(numOfConsts):
+        letters.append(random.choice(consts))
+    for i in range(2):
+        letters.append(random.choice(vowels + consts))
+    return letters
+```
 
 ## Preprocessing
 My script preprocesses the dictionary, which only needs to be run once.
@@ -91,17 +111,12 @@ This code implements a dict() structure with keys and values of all the words in
 
 
 ## Efficiency
-### countdownAlgo.py
-My first run is a very naive solution. 9*8*7*6 = 3024 searches through the wordlist in the worst of cases.
-And thats only to the fifth letter search.
 
 
 Using the itertools.combination allows for
 
 ```python
-nCr  =  	n!
-          -----------
-         	r!(n - r)!
+nCr  =  	n! / r!(n - r)!
 ```
 
 | forumla (n)  | sum   |
@@ -154,3 +169,5 @@ C:\Users\g0030\Documents\GitHub\AnagramFinder>Solver.py
 [2]: http://datagenetics.com/blog/august52014/index.html
 [3]: http://www-01.sil.org/linguistics/wordlists/english/
 [4]: https://en.wikipedia.org/wiki/Countdown_(game_show)#Letters_round
+[5]: https://en.wikipedia.org/wiki/Scrabble_letter_distributions
+[6]: http://stackoverflow.com/questions/28136435/python-munging-data-with-join-typeerror-sequence-item-0-expected-string
