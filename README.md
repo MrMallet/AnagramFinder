@@ -17,13 +17,13 @@ I got my words list from the [English Wordlists ][3] website.
 However my list of 9 (and less than) letter wordlist is [nineOrLess.txt](nineOrLess.txt)
 
 ##Instructions
-Simply run solver.py
+Simply run solver.py.
 You'll get an anagram and a solution(the first solution that the algorithm comes across will also be the highest in length).
 
 ## Python scripts
 
 ### countdownAlgo.py
-My first run is a [very naive solution](countDownAlgo.py). 1*9*8*7*6 = 3024 searches through the wordlist in the worst of cases.
+My first run is a [very naive solution](countDownAlgo.py). 1x9x8x7x6 = 3024 searches through the wordlist in the worst of cases.
 And that's only to the fifth letter search. In conjunction with a search through the wordlist array to find a matching hashedWord, the time for a search was staggered throughout the if statements, lasting up to several seconds.
 
 ```python
@@ -61,7 +61,6 @@ for i in range(0, count):
         if combination in wordDict.keys():
             return(wordDict[combination])
 
-
 ```
 Get the letters was simple enough with the vowels and consonants weighted using [scrabble weighting](4) as the wiki page suggests they are very [similarly weighted](5)#Letters_round) using the Oxford dictionarys
 ```python
@@ -80,6 +79,36 @@ def getLetters():
     for i in range(2):
         letters.append(random.choice(vowels + consts))
     return letters
+```
+
+However, I started on the road of itertools.permuations and was a bit flumoxed with it as I was getting similar type numbers numbers that I was getting in my previous naive algorithm in terms of possiblities. 
+```python
+def longestWord(letters):
+     perms = []
+     perm =[]
+     count = len(letters)
+     for i in range(0, count):
+         perms += itertools.permutations(letters, count)
+         perm = ["".join(line) for line in perms]
+         count -=1
+     return perm
+```
+
+Thankfully a classmate [John](https://github.com/JohnMalmsteen/python-countdown-cheatbot) had faced the same problem and notified me that the solution was simply using combinations instead of permutations. 
+```python
+import itertools
+from itertools import combinations
+
+def longestWord(letters):
+    perms = []
+    perm =[]
+    count = len(letters)
+    for i in range(0, count):
+        perms += itertools.combinations(letters, count)
+        perm = ["".join(line) for line in perms]
+        count -=1
+    return perm
+
 ```
 
 ## Preprocessing
@@ -110,7 +139,6 @@ This code implements a dict() structure with keys and values of all the words in
 
 
 ## Efficiency
-
 
 Using the itertools.combination allows for
 
