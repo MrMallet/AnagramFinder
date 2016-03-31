@@ -5,20 +5,24 @@ from itertools import combinations
 
 wordDict = dict() #https://docs.python.org/2/library/stdtypes.html#dictionary-view-objects
 
+def processWord(word):
+    sortword = sorted(word)
+    joinword = "".join(sortword)
+    return joinword
+
 def preprocess():
     count=0
     f = open('nineOrLess.txt', 'r')
     words = f.read().split()
     for word in words:
-        key = sorted(word)
-        sortedKey = "".join(key)
+        sortedKey = processWord(word)
         count +=1
-        addToMap(sortedKey,word)
+        addToDic(sortedKey,word)
 
-def addToMap(key,value):
+def addToDic(key,value):
     if(len(key)>2 and len(key)<10):
         if key in wordDict:
-            wordDict.get(key).append(value) #if key exists, get the reference to the list(value) and add it.
+            wordDict.get(key).append(value)
         else:
             wordDict.update({key:[value]})
 
@@ -29,7 +33,6 @@ consts =['q','w','w','r','r','r','r','r','r','t','t','t','t','t','t','y','y','p'
 #two arrays above weighted using scrabble weighting
 numOfVowels = 3
 numOfConsts = 4
-checkAnswerCounter = 9
 
 def getLetters():
     letters=[]
@@ -41,11 +44,6 @@ def getLetters():
         letters.append(random.choice(vowels + consts))
     return letters
 
-def processWord(word):
-    sortword = sorted(word)
-    joinword = "".join(sortword)
-    return joinword
-
 def searcher(sortedLetters):
     count = (len(sortedLetters))
     #print (len(sortedLetters))
@@ -53,7 +51,7 @@ def searcher(sortedLetters):
     comb= []
     for i in range(0, count):
         combs = itertools.combinations(sortedLetters, count)
-        #this allows for a maximum of 9c9+c98+9c7+.... which comes to a totol of
+        #this allows for a maximum of 9c9+c98+9c7+.... which comes to a totol of 502 maximum calls to the 
         comb += ["".join(line) for line in combs]
         count -=1
         for combination in comb:
@@ -63,15 +61,15 @@ def searcher(sortedLetters):
 
 def algoRunner():
     letters = getLetters()
-    #print(letters)
+    print(letters)
     sortedLetters = processWord(letters)
     result =searcher(sortedLetters)
     return result
 
-if __name__=='__main__':
-    print(algoRunner())
-    import timeit
-    print(timeit.timeit("algoRunner()",setup="from __main__ import algoRunner", number = 10000))
+# if __name__=='__main__':
+#     print(algoRunner())
+#     import timeit
+#     print(timeit.timeit("algoRunner()",setup="from __main__ import algoRunner", number = 10000))
 
-#print(algoRunner())
+print(algoRunner())
 #print(searcher(processWord('education')))

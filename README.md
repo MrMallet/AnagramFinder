@@ -15,7 +15,7 @@ The rules of the game are to be found [here][4]
 ## Words list
 My words list is in the file [wordsEN.txt](wordsEn.txt) in this repository/gist.
 I got my words list from the [English Wordlists ][3] website.
-However my list of 9 (and less than) letter wordlist is [nineOrLess.txt][nineOrLess.txt]
+However my list of 9 (and less than) letter wordlist is [nineOrLess.txt](nineOrLess.txt)
 
 
 ## Python script
@@ -23,15 +23,40 @@ My script is in the files [solver.py](solver.py) in this repository and it works
 The most important section is:
 
 ```python
-import random
-print(random.shuffle("My code is cool."))
+
+for i in range(0, count):
+    combs = itertools.combinations(sortedLetters, count)
+    #this allows for a maximum of 9c9+c98+9c7+.... which comes to a totol of 502 maximum calls to the
+    comb += ["".join(line) for line in combs]
+    count -=1
+    for combination in comb:
+        #print (combination)
+        if combination in wordDict.keys():
+            return(wordDict[combination])
+
+
 ```
 
-Previously it looks like this:
+
+
+
+Previously it look like this nightmare:
 ```python
-# Note that the following snippet of code was adapted from
-# the Stack Overflow post available here: http://www.so.com/post/123
-import nothing
+if not answer:
+      print("to the possible 5s")
+      for i in range(len(letters)):
+          answer8 = letters[0:(i)] + letters[(i+1):]
+          for j in range(len(answer8)):
+              answer7 = answer8[0:(j)] + answer8[(j+1):]
+              for k in range(len(answer7)):
+                  answer6 = answer7[0:(k)] + answer7[(k+1):]
+                  for l in range(len(answer6)):
+                      answer5 = answer6[0:(l)] + answer6[(l+1):]
+                      hashed5Anagram = processWordToHash(answer5)
+                      answer = searcher(hashed5Anagram, hashedWords, wordList)
+  return answer
+
+
 ```
 That didn't work too well, so I changed it.
 
@@ -65,7 +90,7 @@ http://www.mathcelebrity.com/permutation.php?num=9&den=3&pl=Combinations
 
 ## Results
 My script runs very quickly, and certainly within the 30 seconds allowed in the Countdown letters game.
-Testing on 10000 calls without preprocessing takes 1.2 seconds
+Testing on 10000 calls with a little preprocessing takes 1.2 seconds
 
 
 
