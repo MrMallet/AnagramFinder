@@ -62,7 +62,7 @@ for i in range(0, count):
             return(wordDict[combination])
 
 ```
-Get the letters was simple enough with the vowels and consonants weighted using [scrabble weighting](4) as the wiki page suggests they are very [similarly weighted](5)#Letters_round) using the Oxford dictionarys
+Get the letters was simple enough with the vowels and consonants weighted using [scrabble weighting](4) as the wiki page suggests they are very [similarly weighted](5) using the Oxford dictionarys
 ```python
 vowels=['a','a','a','a','a','a','a','a','a','e','e','e','e','e','e','e','e','e','e','e','e','i','i','i','i','i','i','i','i','i','o','o','o','o','o','o','o','o','u','u','u','u',]  
 consts=['q','w','w','r','r','r','r','r','r','t','t','t','t','t','t','y','y','p','p','s','s','s','s','d','d','d','d','f','f','g','g','g','j','k','l','l','l','l','z','x','c','c','v','v','b','b','n','n','n','n','n','n','m','m',]
@@ -115,7 +115,7 @@ def longestWord(letters):
 My script preprocesses the dictionary, which only needs to be run once.
 Once the preprocessing is done we can run the game solver again and again without that overhead.
 
-I had a look at Arjuns Gist preprocessing and followed map would allow for much quicker access time. Python allows of data structures called dict().
+I had a look at Arjuns Gist preprocessing and realised a map would allow for much quicker access time. Python allows of data structures like maps called dict().
 
 ```python
 def preprocess():
