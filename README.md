@@ -1,9 +1,12 @@
-### James Moloney
-#### G00304978
+## James Moloney
+## G00304978
+###Theory of Algorithms 
+###4th year BSC Software Development GMIT 
+### Ian McLoughlin(Lecturer)
 
 # Countdown Letters Game Solver
 The aim of the project is to create an algorithm that solves the nine letter Countdown game according to the rules of the game.
-Secondary to that, to create a worlist that most closely represent that used by the Countdown game itself. 
+Secondary to that, to create a worlist that most closely represents that which is used by the Countdown game itself. 
 
 ## Background
 The first task I completed as part of this project was to Google "countdown letters game solver".
@@ -15,13 +18,13 @@ I wanted to create a naive algorithm and then a more considered algorithm.
 My words list is in the file [wordsEN.txt](wordsEn.txt) in this repository/gist.
 I got my words list from the [English Wordlists ][3] website.
 However my list of 9 (and less than) letter wordlist is [nineOrLess.txt](nineOrLess.txt)
+Created with this simple script[outPut9.py](outPut9.py)
 
 ##Instructions
-Simply run solver.py.
+Simply run [solver.py](solver.py) using python.
 You'll get an anagram and a solution(the first solution that the algorithm comes across will also be the highest in length).
 
 ## Python scripts
-
 ### countdownAlgo.py
 My first run is a [very naive solution](countDownAlgo.py). 1x9x8x7x6 = 3024 searches through the wordlist in the worst of cases.
 And that's only to the fifth letter search. In conjunction with a search through the wordlist array to find a matching hashedWord, the time for a search was staggered throughout the if statements, lasting up to several seconds.
@@ -62,7 +65,7 @@ for i in range(0, count):
             return(wordDict[combination])
 
 ```
-Get the letters was simple enough with the vowels and consonants weighted using [scrabble weighting](4) as the wiki page suggests they are very [similarly weighted](5) using the Oxford dictionarys
+Get the letters was simple enough with the vowels and consonants weighted using [scrabble weighting](4) as the wiki page suggests they are very [similarly weighted](5) using the Oxford dictionarys frequency of letters. 
 ```python
 vowels=['a','a','a','a','a','a','a','a','a','e','e','e','e','e','e','e','e','e','e','e','e','i','i','i','i','i','i','i','i','i','o','o','o','o','o','o','o','o','u','u','u','u',]  
 consts=['q','w','w','r','r','r','r','r','r','t','t','t','t','t','t','y','y','p','p','s','s','s','s','d','d','d','d','f','f','g','g','g','j','k','l','l','l','l','z','x','c','c','v','v','b','b','n','n','n','n','n','n','m','m',]
@@ -190,6 +193,9 @@ C:\Users\g0030\Documents\GitHub\AnagramFinder>Solver.py
 
 
 ## References
+The references are laced throughout the ReadMe file above. They can also be seen when the document is viewed in raw form. 
+
+
 [1]: http://incoherency.co.uk/countdown/
 [2]: http://datagenetics.com/blog/august52014/index.html
 [3]: http://www-01.sil.org/linguistics/wordlists/english/
